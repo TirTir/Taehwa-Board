@@ -1,0 +1,33 @@
+<div class = "Container">
+  <div class="Title">
+    <h1>게시판</h1>
+    <button [routerLink]="'article'">작성하기</button>
+  </div>
+  <table class="Table">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of Article" (click)="goToDetail(article.id)">
+        <td>{{ article.id }}</td>
+        <td>{{ article.title }}</td>
+        <td>{{ article.userName }}</td>
+        <td>{{ article.updatedAt }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="Pagination">
+    <button class="PrevBtn">&lt;</button>
+    <button class="PageNumber active">1</button>
+    <button class="PageNumber">2</button>
+    <button class="PageNumber">3</button>
+    <button class="PageNumber">4</button>
+    <button class="PageNumber">5</button>
+    <button class="NextBtn">&gt;</button>
+  </div>
+</div>

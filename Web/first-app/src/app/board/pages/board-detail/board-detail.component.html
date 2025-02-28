@@ -1,0 +1,37 @@
+<div class="Container">
+  <div class="Title">
+    <h1>게시글 상세</h1>
+  </div>
+  <div *ngIf="Article">
+    <div class="detail-row">
+      <span class="detail-label">제목</span>
+      <span class="detail-value">{{ Article.title }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">작성자</span>
+      <span class="detail-value">{{ Article.userName }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">작성일</span>
+      <span class="detail-value">{{ Article.updatedAt }}</span>
+    </div>
+    <div class="Content">
+      <span class="detail-value">{{ Article.content }}</span>
+    </div>
+  </div>
+
+  <div *ngIf="!Article">
+    <p>게시글을 불러오는 중...</p>
+  </div>
+
+  <div class="ButtonGroup">
+    <ng-container *ngIf="isOwner; else backButton">
+      <button class="SubmitBtn" (click)="editArticle()">수정하기</button>
+      <button class="DeleteBtn" (click)="deleteArticle()">삭제하기</button>
+    </ng-container>
+
+    <ng-template #backButton>
+      <button class="back-button" (click)="goBack()">목록</button>
+    </ng-template>
+  </div>
+</div>

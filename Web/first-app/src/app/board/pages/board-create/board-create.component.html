@@ -1,0 +1,35 @@
+<div class="Container">
+  <div class="Title">
+    <h1>게시글 작성</h1>
+  </div>
+  <form class="WriteForm" #articleForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="FormGroup">
+      <label for="title">제목</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="article.title"
+        required
+      />
+    </div>
+    <div class="FormGroup">
+      <label for="content">내용</label>
+      <textarea
+        id="content"
+        name="content"
+        rows="10"
+        [(ngModel)]="article.content"
+        required
+      ></textarea>
+    </div>
+
+    <!-- 작성/취소 버튼 -->
+    <div class="ButtonGroup">
+      <button class="SubmitBtn" type="submit" [disabled]="articleForm.invalid">
+        글 작성
+      </button>
+      <button class="CancelBtn" type="button" (click)="goBack()">취소</button>
+    </div>
+  </form>
+</div>

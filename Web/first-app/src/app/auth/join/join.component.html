@@ -1,0 +1,43 @@
+<div class="Container">
+  <div class="Title">
+    <h1>회원가입</h1>
+  </div>
+
+  <form class="signup-form" #signupForm="ngForm" (ngSubmit)="onJoin()">
+    <div class="form-field">
+      <input
+        type="text"
+        id="userName"
+        name="userName"
+        required
+        [(ngModel)]="userName"
+        placeholder="아이디를 입력해주세요."
+      />
+    </div>
+
+    <div class="form-field">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        [(ngModel)]="email"
+        placeholder="example@example.com"
+      />
+    </div>
+
+    <div class="form-field">
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        [(ngModel)]="password"
+        placeholder="비밀번호를 입력해주세요."
+      />
+    </div>
+    <button class="submit-btn" type="submit" [disabled]="signupForm.invalid">
+      가입하기
+    </button>
+  </form>
+</div>

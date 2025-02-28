@@ -1,0 +1,26 @@
+<div>
+  <div class="header">
+    <a href="#" class="header-title">TAEHWAINOVATION</a>
+    <a *ngIf="!isLoggedIn" routerLink="/auth/login">LOGIN</a>
+    <a *ngIf="isLoggedIn" href="#" (click)="onLogout($event)">LOGOUT</a> 
+  </div>
+  <div class="container">
+    <div class="sidebar">
+      <li>
+        <a href="#">게시판 홈</a>
+      </li>
+      <li>
+        <a href="#">전체 게시글</a>
+      </li>
+      <li>
+        <a href="#">공지 관리</a>
+      </li>
+      <li>
+        <a href="#">게시글 관리</a>
+      </li>
+    </div>
+    <div class="main">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

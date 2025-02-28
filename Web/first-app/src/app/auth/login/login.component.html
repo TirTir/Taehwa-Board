@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="title">
+    <h1>로그인</h1>
+  </div>
+  <div class="login-form">
+    <input class="input-field" placeholder="User ID" [(ngModel)]="userName" name="userName" />
+    <input class="input-field" placeholder="Password" [(ngModel)]="password" name="password" type="password" />
+    <button class="login-button" (click)="onLogin()">Login</button>
+    <a class="signup-link" routerLink="/auth/join">회원가입</a>
+  </div>
+</div>

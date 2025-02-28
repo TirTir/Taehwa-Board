@@ -1,0 +1,78 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EA5421 ;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header a {
+  color: white;
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.header .header-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.header a:last-child {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: white;
+}
+
+.sidebar {
+  flex: 0 0 240px;
+  height: 100%;
+  background-color: #f4f6f8;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar li {
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+.sidebar a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 15px;
+  transition: all 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #e0e4e7;
+  color: #0070f3;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-left: 20px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    box-shadow: none;
+  }
+}
