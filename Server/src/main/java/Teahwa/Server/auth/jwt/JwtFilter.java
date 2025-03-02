@@ -44,15 +44,14 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         String path = request.getRequestURI();
-        if (path.equals("/api/signup") || path.equals("/api/signin")) {
-            filterChain.doFilter(request, response);  // 로그인, 회원가입 요청은 건너뛰기
-            return;
-        }
 
-        if (path.equals("/article") || path.equals("/article/detail")) {
+        if (path.equals("/article") || path.equals("/article/") || path.startsWith("/article/detail") || path.startsWith("/api/signin") || path.startsWith("/api/signup")) {
+            log.info("JWT 필터: 인증 우회 - {}", path);
             filterChain.doFilter(request, response);
             return;
         }
+
+        log.info("JWT 필터: 요청 경로 = {}", path);
 
         // 쿠키에서 access token 추출
         String accessToken = cookieUtil.getAccessTokenFromCookie(request);

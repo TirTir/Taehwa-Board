@@ -32,48 +32,43 @@ export interface ApiResponse<T> {
   providedIn: 'root',
 })
 export class BoardService {
-  private apiUrl = 'http://localhost:8080/article';
+  private apiUrl = 'https://taehwa.n-e.kr/article';
 
   constructor(private http: HttpClient) {}
+
 
   // 게시글 목록 가져오기
   getArticleList(): Observable<ResArticle[]> {
     return this.http
-      .get<ApiResponse<ResArticle[]>>(`${this.apiUrl}/`)
+      .get<ApiResponse<ResArticle[]>>(`${this.apiUrl}/`, { withCredentials: true })
       .pipe(map((response: ApiResponse<ResArticle[]>) => response.data));
   }
 
   // 특정 게시글 상세보기
   getArticle(id: number): Observable<ResArticleDetail> {
     return this.http
-      .get<ApiResponse<ResArticleDetail>>(`${this.apiUrl}/detail/${id}`)
+      .get<ApiResponse<ResArticleDetail>>(`${this.apiUrl}/detail/${id}`, { withCredentials: true })
       .pipe(map((response: ApiResponse<ResArticleDetail>) => response.data));
   }
 
   // 게시글 등록
   createArticle(article: ReqArticle): Observable<ResArticle> {
     return this.http
-      .post<ApiResponse<ResArticle>>(`${this.apiUrl}/create`, article, {
-        withCredentials: true,
-      })
+      .post<ApiResponse<ResArticle>>(`${this.apiUrl}/create`, article, { withCredentials: true })
       .pipe(map((response: ApiResponse<ResArticle>) => response.data));
   }
 
   // 게시글 수정
   updateArticle(id: number, article: ReqArticle): Observable<ResArticle> {
     return this.http
-      .put<ApiResponse<ResArticle>>(`${this.apiUrl}/update/${id}`, article, {
-        withCredentials: true,
-      })
+      .put<ApiResponse<ResArticle>>(`${this.apiUrl}/update/${id}`, article, { withCredentials: true })
       .pipe(map((response: ApiResponse<ResArticle>) => response.data));
   }
 
   // 게시글 삭제
   deleteArticle(id: number): Observable<void> {
     return this.http
-      .delete<ApiResponse<void>>(`${this.apiUrl}/${id}`, {
-        withCredentials: true,
-      })
+      .delete<ApiResponse<void>>(`${this.apiUrl}/${id}`, { withCredentials: true })
       .pipe(map((response: ApiResponse<void>) => response.data));
   }
 }

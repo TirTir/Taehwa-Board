@@ -24,7 +24,7 @@ export interface CommonResponse<T = any> {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api';
+  private apiUrl = 'https://taehwa.n-e.kr/api';
 
   private loggedIn = new BehaviorSubject<boolean>(this.checkLoginStatus());
   isLoggedIn$ = this.loggedIn.asObservable(); // Observable로 공개
